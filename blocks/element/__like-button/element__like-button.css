@@ -1,11 +1,13 @@
-.like__button {
-  width: 22px;
-  height: 19px;
+.element__like-button {
+  margin: 0;
+  padding: 0;
   background-color: #fff;
   border: none;
   transition: 0.1s ease;
   cursor: pointer;
+  text-align: center;
 }
-.like__button:hover {
+
+.element__like-button:hover {
   opacity: 50%;
 }

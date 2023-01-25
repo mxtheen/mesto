@@ -1,8 +1,13 @@
-.profile{
-  border: 1px solid red;
+.profile {
   max-width: 880px;
   margin: 0 auto 51px;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
   align-items: center;
+}
+@media (max-width: 650px){
+  .profile {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content min-content;
+  }
 }

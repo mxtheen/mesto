@@ -4,3 +4,8 @@
   line-height: 1.21;
   color: #545454;
 }
+@media (max-width:650px) {
+  .footer__title {
+    font-size: 14px;
+  }
+}

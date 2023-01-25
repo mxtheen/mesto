@@ -3,4 +3,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.21;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  align-self: flex-end;
+}
+
+@media (max-width: 650px){
+  .profile__subtitle {
+    font-size: 14px;
+    text-align: center;
+  }
 }

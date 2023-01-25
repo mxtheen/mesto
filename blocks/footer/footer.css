@@ -1,4 +1,4 @@
 .footer {
-  margin-top: 67px;
-  padding-left: 200px;
+  max-width: 880px;
+  margin: 67px auto 0;
 }
