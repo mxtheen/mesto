@@ -6,9 +6,9 @@ let popBtnClose = document.querySelector(".popup__close-button");
 // Объявляем переменную popBtnClose //
 let formElement = document.querySelector(".popup__form");
 // Объявляем переменную formElement //
-let nameInput = document.querySelector(".popup__input_name");
+let nameInput = document.querySelector(".popup__input_name_nameInput");
 // Объявляем переменную nameInput //
-let jobInput = document.querySelector(".popup__input_profession");
+let jobInput = document.querySelector(".popup__input_profession_jobInput");
 // Объявляем переменную jobInput //
 let profileTitle = document.querySelector (".profile__title");
 // Объявляем переменную profileTitle //
@@ -17,13 +17,13 @@ let profileSubtitle = document.querySelector (".profile__subtitle");
 
 
 function openPopup () {
-  popupContainer.classList.add("popup__opened");
+  popupContainer.classList.add("popup_opened");
   nameInput.value = profileTitle.textContent;
   jobInput.value= profileSubtitle.textContent;
 }
 // Объявляем функцию openPopup, которая отвечает за открытие всплывающего окна //
 function closePopup() {
-  popupContainer.classList.remove("popup__opened");
+  popupContainer.classList.remove("popup_opened");
 }
 // Объявляем функцию closePopup, которая отвечает за закрытие всплывающего окна //
 popupBtnOpen.addEventListener("click", openPopup);
@@ -35,7 +35,7 @@ function handleFormSubmit (evt) {
     evt.preventDefault();
     profileTitle.textContent= nameInput.value;
     profileSubtitle.textContent= jobInput.value;
-    popupContainer.classList.remove("popup__opened");
+    closePopup();
 }
 // Объявляем функцию handleFormSubmit, которая отвечает за получение значений поля jobInput и nameInput и вставляет новые значения с помощью textContent в блоки profile.Title и profile.Subtitle //
 

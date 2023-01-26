@@ -1,7 +1,10 @@
 .element__caption {
-  margin: 0 auto;
-  width: 246px;
+  background-color: #fff;
+  padding: 25px 0 25px;
+  width: 282px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
 }

@@ -4,12 +4,12 @@
   justify-content: center;
   position: relative;
   width: 430px;
-  height: 330px;
+  min-height: 330px;
 }
 
 @media (max-width: 550px){
   .popup__content {
     width: 282px;
-    height: 322px;
+    min-height: 322px;
   }
 }
