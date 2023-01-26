@@ -1,112 +1,116 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
+
 <body class="page">
-<header class="header">
+  <header class="header">
     <img class="header__logo" src="./images/Vector.svg" alt="Место - логотоп">
-</header>
-<main class="content">
-  <section class="profile">
-    <img class="profile__avatar" src="./images/avatar__image.jpg" alt="">
-    <div class="profile__info">
-      <h1 class="profile__title">Жак-Ив Кусто</h1>
-      <p class="profile__subtitle">Исследователь океана</p>
-      <button type="button" class="profile__edit-button">
-        <img class="profile__edit-image" src="./images/Edit Button.svg" alt="Кнопка редактирования">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__container">
+          <img class="profile__avatar" src="images/avatar__image.jpg" alt="аватар">
+          <div class="profile__info">
+              <div class="profile__info-container">
+                  <h1 class="profile__title">Жак-Ив Кусто</h1>
+                  <button type="button" class="profile__edit-button"></button>
+              </div>
+              <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+      </div>
+      <button class="profile__add-button" type="button">
+        <img class="profile__add-image" src="./images/vector_plus__image.svg" alt="Добавить изображение">
       </button>
-    </div>
-    <button class="profile__add-button" type="button">
-      <img class="profile__add-image" src="./images/vector_plus__image.svg" alt="">
-    </button>
-  </section>
-  <section class="elements">
-    <div class="element">
-      <img class="element__image" src="./images/girlInAForest.jpg" alt="Девушка в лесу">
-      <div class="element__title">
-        <div class="element__caption">
-          <p class="element__name">Лесная роща</p>
-          <button  class="element__like-button">
-            <img class="element__like-image" src="./images/like__button-vector.svg">
-          </button>
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img class="element__image" src="./images/girlInAForest.jpg" alt="Девушка в лесу">
+        <div class="element__title">
+          <div class="element__caption">
+            <p class="element__name">Лесная роща</p>
+            <button type="button" class="element__like-button">
+              <img class="element__like-image" src="./images/like__button-vector.svg" alt="Поставить лайк">
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/horizontalMountainsPicture.jpg" alt="Горы с утра">
-      <div class="element__title">
-        <div class="element__caption">
-          <p class="element__name">Зимние горы</p>
-          <button  class="element__like-button">
-            <img class="element__like-image" src="./images/like__button-vector.svg">
-          </button>
+      <div class="element">
+        <img class="element__image" src="./images/horizontalMountainsPicture.jpg" alt="Горы с утра">
+        <div class="element__title">
+          <div class="element__caption">
+            <p class="element__name">Зимние горы</p>
+            <button class="element__like-button">
+              <img class="element__like-image" src="./images/like__button-vector.svg" alt="Поставить лайк">
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/verticalMountainsPicture.jpg" alt="Горы">
-      <div class="element__title">
-        <div class="element__caption">
-          <p class="element__name">Рассвет в горах</p>
-          <button  class="element__like-button">
-            <img class="element__like-image" src="./images/like__button-vector.svg">
-          </button>
+      <div class="element">
+        <img class="element__image" src="./images/verticalMountainsPicture.jpg" alt="Горы">
+        <div class="element__title">
+          <div class="element__caption">
+            <p class="element__name">Рассвет в горах</p>
+            <button class="element__like-button">
+              <img class="element__like-image" src="./images/like__button-vector.svg" alt="Поставить лайк">
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/winterForest.jpg" alt="Зимний лес">
-      <div class="element__title">
-        <div class="element__caption">
-          <p class="element__name">Зимний лес</p>
-          <button  class="element__like-button">
-            <img class="element__like-image" src="./images/like__button-vector.svg">
-          </button>
+      <div class="element">
+        <img class="element__image" src="./images/winterForest.jpg" alt="Зимний лес">
+        <div class="element__title">
+          <div class="element__caption">
+            <p class="element__name">Зимний лес</p>
+            <button class="element__like-button">
+              <img class="element__like-image" src="./images/like__button-vector.svg" alt="Поставить лайк">
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/someBooks.jpg" alt="Стеллаж с фотокамерами">
-      <div class="element__title">
-        <div class="element__caption">
-          <p class="element__name">Стеллаж с фотокамерами</p>
-          <button  class="element__like-button">
-            <img class="element__like-image" src="./images/like__button-vector.svg">
-          </button>
+      <div class="element">
+        <img class="element__image" src="./images/someBooks.jpg" alt="Стеллаж с фотокамерами">
+        <div class="element__title">
+          <div class="element__caption">
+            <p class="element__name">Стеллаж с фотокамерами</p>
+            <button class="element__like-button">
+              <img class="element__like-image" src="./images/like__button-vector.svg" alt="Поставить лайк">
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__image" src="./images/workPlace.jpg" alt="Рабочее место">
-      <div class="element__title">
-        <div class="element__caption">
-          <p class="element__name">Рабочее место</p>
-          <button  class="element__like-button">
-            <img class="element__like-image" src="./images/like__button-vector.svg">
-          </button>
+      <div class="element">
+        <img class="element__image" src="./images/workPlace.jpg" alt="Рабочее место">
+        <div class="element__title">
+          <div class="element__caption">
+            <p class="element__name">Рабочее место</p>
+            <button class="element__like-button">
+              <img class="element__like-image" src="./images/like__button-vector.svg" alt="Поставить лайк">
+            </button>
+          </div>
         </div>
       </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <h2 class="footer__title">&copy;&nbsp;2023 Mesto Russia</h2>
+  </footer>
+  <div class="popup">
+    <div class="popup__content">
+      <button type="button" class="popup__close-button"></button>
+      <form class="popup__form">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input class="popup__input popup__input_name" placeholder="Имя" type="text" name="name" value="nameInput">
+        <input class="popup__input popup__input_profession" placeholder="Род деятельности" type="text" name="profession" value="jobInput">
+        <button type="submit" class="popup__save-button">Сохранить</button>
+      </form>
     </div>
-  </section>
-</main>
-<footer class="footer">
-  <h2 class="footer__title">&copy;&nbsp;2023 Mesto Russia</h2>
-</footer>
-<div class="popup">
-  <div class="popup__content">
-    <button type="button" class="popup__close-button"></button>
-    <form class="popup__form">
-      <h3 class="popup__title">Редактировать профиль</h3>
-      <input class="popup__input popup__input_name" placeholder="Имя" type="text" name="name" value="">
-      <input class="popup__input popup__input_profession" placeholder="Род деятельности" type="text" name="profession" value="">
-      <button type="button" class="popup__save-button">Сохранить</button>
-    </form>
   </div>
-</div>
-<script src="./index.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>
