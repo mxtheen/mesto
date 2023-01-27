@@ -6,6 +6,7 @@
   line-height: 1.21;
   font-weight: 400;
   margin-bottom: 30px;
+  align-self: center;
   padding-bottom: 7px;
 }
 .popup__input:last-of-type {

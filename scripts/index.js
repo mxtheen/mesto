@@ -6,9 +6,9 @@ let popBtnClose = document.querySelector(".popup__close-button");
 // Объявляем переменную popBtnClose //
 let formElement = document.querySelector(".popup__form");
 // Объявляем переменную formElement //
-let nameInput = document.querySelector(".popup__input_name_nameInput");
+let nameInput = document.querySelector(".popup__input_type_nameInput");
 // Объявляем переменную nameInput //
-let jobInput = document.querySelector(".popup__input_profession_jobInput");
+let jobInput = document.querySelector(".popup__input_type_jobInput");
 // Объявляем переменную jobInput //
 let profileTitle = document.querySelector (".profile__title");
 // Объявляем переменную profileTitle //
