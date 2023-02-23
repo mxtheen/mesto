@@ -9,6 +9,7 @@
   background-size: contain;
   top: -12%;
   right: -9%;
+  transition: opacity 0.1s ease;
 }
 @media (max-width:550px) {
   .popup__close-button {
@@ -17,4 +18,7 @@
     top: -11%;
     right: 0;
   }
+}
+.popup__close-button:hover {
+  opacity: 60%
 }
