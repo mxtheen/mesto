@@ -9,6 +9,7 @@
   border: none;
   transition: opacity 0.1s ease;
   background-image: url(../../../images/Trash.svg);
+  background-repeat: no-repeat;
 }
 .element__remove-button:hover {
   opacity: 60%;
