@@ -45,16 +45,12 @@ const nameInput = document.querySelector(".popup__input_type_name")
 const jobInput = document.querySelector(".popup__input_type_job")
 const titleInput = document.querySelector(".popup__input_type_title")
 const linkInput = document.querySelector(".popup__input_type_link")
-const popupCaption = document.querySelector('.popup__caption');
-const popupImage = document.querySelector('.popup__image');
+const popupCaption = document.querySelector('.popup__caption')
+const popupImage = document.querySelector('.popup__image')
 
 
 function openPopup (item) {
   item.classList.add("popup_opened")
-  nameInput.value = profileTitle.textContent
-  jobInput.value = profileSubtitle.textContent
-  titleInput.value = titleInput.textContent
-  linkInput.value = linkInput.textContent
 }
 
 
@@ -76,7 +72,7 @@ renderCards(initialCards)
 function createCard (item) {
   const cardElement = cardTemplate.cloneNode(true)
   cardElement.querySelector(".element__title").textContent = item.name
-  cardElement.querySelector(".element__image").alt = item.link
+  cardElement.querySelector(".element__image").alt = item.name
   cardElement.querySelector(".element__image").src = item.link
   cardElement.querySelector(".element__like-button").addEventListener("click", function (evt) {
     evt.target.classList.toggle("element__like-image_active")
@@ -87,20 +83,21 @@ function createCard (item) {
   cardElement.querySelector(".element__image").addEventListener ("click", () => {
     popupCaption.textContent = cardElement.querySelector(".element__title").textContent
     popupImage.src = cardElement.querySelector(".element__image").src
+    popupImage.alt = item.name
     openPopup(popupScaleImage)
   })
   return cardElement
 }
 
 
-submitAdd.addEventListener("click", (evt) => {
+formElementAdd.addEventListener("submit", (evt) => {
   evt.preventDefault()
   const cardElement = createCard ({name: titleInput.value, link: linkInput.value});
   elements.prepend(cardElement)
   closePopup(popupAdd)
 })
 
-submitEdit.addEventListener("click", (evt) => {
+formElementEdit.addEventListener("submit", (evt) => {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
@@ -109,8 +106,17 @@ submitEdit.addEventListener("click", (evt) => {
 
 
 
-popupBtnAdd.addEventListener("click", ()=> openPopup(popupAdd))
-popupBtnEdit.addEventListener("click", ()=> openPopup(popupEdit))
+popupBtnAdd.addEventListener("click", (function () {
+  titleInput.value = titleInput.textContent
+  linkInput.value = linkInput.textContent
+  openPopup(popupAdd)
+}))
+
+popupBtnEdit.addEventListener("click", function () {
+  nameInput.value = profileTitle.textContent
+  jobInput.value = profileSubtitle.textContent
+  openPopup(popupEdit)}
+ )
 
 
 popupBtnCloseAdd.addEventListener("click", ()=> closePopup(popupAdd))
