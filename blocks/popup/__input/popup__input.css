@@ -9,9 +9,6 @@
   align-self: center;
   padding-bottom: 7px;
 }
-.popup__input:last-of-type {
-  margin-bottom: 48px;
-}
 .popup__input:focus {
   outline-color: #034dfc;
 }
