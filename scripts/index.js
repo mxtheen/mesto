@@ -50,7 +50,7 @@ const popupImage = document.querySelector('.popup__image')
 
 function openPopup (item) {
   item.classList.add("popup_opened")
-  item.addEventListener("click", overlayClosePopup)
+  item.addEventListener("mousedown", overlayClosePopup)
 }
 
 
