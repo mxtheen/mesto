@@ -30,16 +30,8 @@ function openPopup (item) {
 
 function closePopup (item) {
  item.classList.remove("popup_opened")
- item.removeEventListener("click", closeOverlayPopup)
+ item.removeEventListener("mousedown", closeOverlayPopup)
  item.removeEventListener("keydown", closeEscapePopup)
-}
-
-function closeEscapePopup (evt) {
-  if (evt.key === "Escape") {
-    const popupOpened = document.querySelector(".popup_opened")
-    closePopup(popupOpened)
-    document.removeEventListener("keydown", closeEscapePopup)
-  }
 }
 
 function closeOverlayPopup(evt) {
@@ -49,6 +41,13 @@ function closeOverlayPopup(evt) {
   };
 }
 
+function closeEscapePopup (evt) {
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector(".popup_opened")
+    closePopup(popupOpened)
+    document.removeEventListener("keydown", closeEscapePopup)
+  }
+}
 
 function renderCards (items) {
   const cards = items.map ((item) => {
