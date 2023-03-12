@@ -8,6 +8,7 @@
   cursor: pointer;
   transition: opacity 0.1s ease;
   align-self: center;
+  margin-bottom: 30px;
 }
 .popup__save-button:hover {
   opacity: 80%;

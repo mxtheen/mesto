@@ -24,14 +24,14 @@ const popupImage = document.querySelector('.popup__image')
 function openPopup (item) {
   item.classList.add("popup_opened")
   item.addEventListener("mousedown", closeOverlayPopup)
-  item.addEventListener("keydown", closeEscapePopup)
+  document.addEventListener("keydown", closeEscapePopup)
 }
 
 
 function closePopup (item) {
  item.classList.remove("popup_opened")
  item.removeEventListener("mousedown", closeOverlayPopup)
- item.removeEventListener("keydown", closeEscapePopup)
+ document.removeEventListener("keydown", closeEscapePopup)
 }
 
 function closeOverlayPopup(evt) {
@@ -45,7 +45,6 @@ function closeEscapePopup (evt) {
   if (evt.key === "Escape") {
     const popupOpened = document.querySelector(".popup_opened")
     closePopup(popupOpened)
-    document.removeEventListener("keydown", closeEscapePopup)
   }
 }
 
@@ -75,7 +74,6 @@ function createCard (item) {
     popupImage.src = cardElement.querySelector(".element__image").src
     popupImage.alt = item.name
     openPopup(popupScaleImage)
-    document.addEventListener("keydown", closeEscapePopup)
   })
   return cardElement
 }
@@ -105,14 +103,12 @@ popupBtnAdd.addEventListener("click", (function () {
   titleInput.value = ""
   linkInput.value = ""
   openPopup(popupAdd)
-  document.addEventListener("keydown", closeEscapePopup)
 }))
 
 popupBtnEdit.addEventListener("click", function () {
   nameInput.value = profileTitle.textContent
   jobInput.value = profileSubtitle.textContent
   openPopup(popupEdit)
-  document.addEventListener("keydown", closeEscapePopup)
 })
 
 
