@@ -6,7 +6,7 @@ class Card {
     this._link = data.link;
     this._cardTemplate = cardTemplate;
   }
-  _getTemplate () {
+  _getTemplate() {
     const cardElement = document.querySelector(this._cardTemplate).content.querySelector(".element").cloneNode(true)
     return cardElement
   }
