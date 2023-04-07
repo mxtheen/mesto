@@ -1,9 +1,13 @@
 # Проект: Место
 
 
-Mesto - это проектная работы от платформы "Яндекс.Практикум", в которой впервые за время обучения применяются основы JavaScript для реализации "попапов"
+Mesto - это проектная работы от платформы "Яндекс.Практикум", в которой продолжается изучение JavaScript, а также продолжается изучение особенностей языка и более продвиннутых концепций.
 
-Работа подразумевает собой **одностраничный сайт** с использованием различных **CSS3** и **HTML5** технологий, а также базовых технологий **JavaScript**.
+Работа подразумевает собой **одностраничный сайт** с использованием **CSS3** и **HTML5**, **JavaScript**.
+
+При выполнении 7 Практической работы была поставлена реорганизовать код в работе под ООП с примениенем абстрации (создание класса Card и FormValidator).
+
+
 ### Обзор
 Организация файловой структуры выполнена по технологии Nested, а сама работа использует методологию БЭМ для разделения интерфейса на независимые блоки.
 ```
@@ -24,27 +28,27 @@ mesto
 
 Используются оптимизированные изображения, которые находится в папке **images**. Оптимизация изображений также важна, чтобы не нагружать сайт лишней загрузкой больших изображений.
 
-В работе, как было сказано выше, впервые применяется язык JavaScript. Работа этого языка подключена в файле **index.js**, который находится в корне папки **mesto**.
+В работе, как было сказано выше, используется объективно-ориентированное програмирование для создания классов Card и FormValidator.
 
 ```
-let popupContainer = document.querySelector(".popup");
-let popupBtnOpen = document.querySelector(".profile__edit-button");
-let popBtnClose = document.querySelector(".popup__close-button");
-
-function openPopup () {
-  popupContainer.classList.add("popup__opened");
-  nameInput.value = profileTitle.textContent;
-  jobInput.value= profileSubtitle.textContent;
+class Card {
+  constructor(data, cardTemplate) {
+    this._name = data.name;
+    this._link = data.link;
+    this._cardTemplate = cardTemplate;
+  }
+    renderCard() {
+    this._element = this._getTemplate()
+    this._image =  this._element.querySelector(".element__image")
+    this._setEventListeners()
+    this._element.querySelector(".element__title").textContent = this._name
+    this._image.alt = this._name
+    this._image.src = this._link
+    return this._element
+  }
 }
-
-function closePopup() {
-  popupContainer.classList.remove("popup__opened");
-}
-
-popupBtnOpen.addEventListener("click", openPopup);
-popBtnClose.addEventListener("click", closePopup);
 ```
-Выше приведен пример реализации открытия попапов с помощью переменных и простейших функций.
+Выше приведен пример реализации класса с Card с публичным методом renderCard.
 
 [Ссылка на GitHub Pages тут.](https://mxtheen.github.io/mesto/)
 

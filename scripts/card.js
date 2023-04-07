@@ -1,6 +1,4 @@
-import initialCards from "./cards.js";
-import {popupCaption, popupImage, popupPreviewImage, closeOverlayPopup, closeEscapePopup} from "./index.js";
-
+import {handlePopupImage} from "./index.js";
 
 class Card {
   constructor(data, cardTemplate) {
@@ -21,38 +19,21 @@ class Card {
     this._element.remove()
   }
 
-  _handlePreviewImage () {
-    popupCaption.textContent = this._element.querySelector(".element__title").textContent
-    popupImage.src = this._element.querySelector(".element__image").src
-    popupImage.alt = this._element.querySelector(".element__title").textContent
-    popupPreviewImage.classList.add("popup_opened")
-    popupPreviewImage.addEventListener("mousedown", closeOverlayPopup)
-    document.addEventListener("keydown", closeEscapePopup)
-  }
-  _closePreviewImage () {
-    popupPreviewImage.classList.remove("popup_opened")
-  }
-
   _setEventListeners() {
     this._element.querySelector(".element__like-button").addEventListener("click", this._handleLikeClick.bind(this))
     this._element.querySelector(".element__remove-button").addEventListener("click", this._handleRemoveClick.bind(this))
-    this._element.querySelector(".element__image").addEventListener("click", this._handlePreviewImage.bind(this))
+    this._element.querySelector(".element__image").addEventListener("click", () => {handlePopupImage(this._name, this._link)})
   }
 
   renderCard() {
     this._element = this._getTemplate()
+    this._image =  this._element.querySelector(".element__image")
     this._setEventListeners()
     this._element.querySelector(".element__title").textContent = this._name
-    this._element.querySelector(".element__image").alt = this._name
-    this._element.querySelector(".element__image").src = this._link
+    this._image.alt = this._name
+    this._image.src = this._link
     return this._element
   }
 }
-
-initialCards.forEach ((item) =>{
-  const card = new Card(item, '#card-template');
-  const cardElement = card.renderCard()
-  document.querySelector(".elements").append(cardElement)
-})
 
 export default Card

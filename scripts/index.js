@@ -1,6 +1,7 @@
 import initialCards from "./cards.js";
-import Card from "./card.js";
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import enableValidationConfig from "./config.js"
 
 const popupEdit = document.querySelector(".popup_edit")
 const popupAdd = document.querySelector(".popup_add")
@@ -22,15 +23,6 @@ const element = document.querySelector(".elements")
 const popupCaption = document.querySelector('.popup__caption')
 const popupImage = document.querySelector('.popup__image')
 
-const enableValidationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error'
-};
-
 
 function createCard (item) {
   const card = new Card(item, '#card-template');
@@ -38,27 +30,39 @@ function createCard (item) {
   return cardElement
 }
 
+initialCards.forEach ((item) =>{
+  const card = new Card(item, '#card-template');
+  const cardElement = card.renderCard()
+  document.querySelector(".elements").append(cardElement)
+})
+
+
 function openPopup (item) {
   item.classList.add("popup_opened")
   item.addEventListener("mousedown", closeOverlayPopup)
-  document.addEventListener("keydown", closeEscapePopup)
-  validatorAdd.toggleButtonState()
+  document.addEventListener("keydown", closePopupByEsc)
+}
+
+function handlePopupImage (name, link) {
+  popupCaption.textContent = name
+  popupImage.src = link
+  popupImage.alt = name
+  openPopup(popupPreviewImage)
 }
 
 function closePopup (item) {
   item.classList.remove("popup_opened")
   item.removeEventListener("mousedown", closeOverlayPopup)
-  document.removeEventListener("keydown", closeEscapePopup)
+  document.removeEventListener("keydown", closePopupByEsc)
  }
 
  function closeOverlayPopup(evt) {
   if (evt.target === evt.currentTarget) {
-    const popupOpened = document.querySelector(".popup_opened")
-    closePopup(popupOpened);
+    closePopup(evt.currentTarget);
   };
 }
 
- function closeEscapePopup (evt) {
+ function closePopupByEsc (evt) {
   if (evt.key === "Escape") {
     const popupOpened = document.querySelector(".popup_opened")
     closePopup(popupOpened)
@@ -66,8 +70,8 @@ function closePopup (item) {
 }
 
 popupBtnAdd.addEventListener("click", (function () {
-  titleInput.value = ""
-  linkInput.value = ""
+  formAdd.reset()
+  validatorAdd.toggleButtonState()
   openPopup(popupAdd)
 }))
 
@@ -108,4 +112,4 @@ validatorAdd.enableValidation();
 
 
 
-export {popupCaption, popupImage, popupPreviewImage, closeOverlayPopup, closeEscapePopup}
+export {handlePopupImage}
