@@ -6,10 +6,10 @@ const popupEdit = document.querySelector(".popup_edit")
 const popupAdd = document.querySelector(".popup_add")
 const profileTitle = document.querySelector(".profile__title")
 const profileSubtitle = document.querySelector(".profile__subtitle")
-const popupScaleImage = document.querySelector(".popup_scale-image")
+const popupPreviewImage = document.querySelector(".popup_scale-image")
 const popupBtnCloseAdd = document.querySelector(".popup__close-button_add")
 const popupBtnCloseEdit = document.querySelector(".popup__close-button_edit")
-const popupBtnCloseScale = document.querySelector(".popup__close-button_image")
+const popupBtnClosePreview = document.querySelector(".popup__close-button_image")
 const formEdit = document.forms.form__edit;
 const formAdd = document.forms.form__add;
 const nameInput = formEdit.elements.name
@@ -42,6 +42,7 @@ function openPopup (item) {
   item.classList.add("popup_opened")
   item.addEventListener("mousedown", closeOverlayPopup)
   document.addEventListener("keydown", closeEscapePopup)
+  validatorAdd.toggleButtonState()
 }
 
 function closePopup (item) {
@@ -57,7 +58,7 @@ function closePopup (item) {
   };
 }
 
-function closeEscapePopup (evt) {
+ function closeEscapePopup (evt) {
   if (evt.key === "Escape") {
     const popupOpened = document.querySelector(".popup_opened")
     closePopup(popupOpened)
@@ -85,18 +86,18 @@ formEdit.addEventListener("submit", (evt) => {
 
 formAdd.addEventListener("submit", (evt) => {
   evt.preventDefault()
-  const newObject = {
+  const newCard = {
     name: titleInput.value,
     link: linkInput.value,
   };
-  element.prepend(createCard(newObject));
+  element.prepend(createCard(newCard));
   closePopup(popupAdd)
 })
 
 
 popupBtnCloseAdd.addEventListener("click", ()=> closePopup(popupAdd))
 popupBtnCloseEdit.addEventListener("click", ()=> closePopup(popupEdit))
-popupBtnCloseScale.addEventListener("click", ()=> closePopup(popupScaleImage))
+popupBtnClosePreview.addEventListener("click", ()=> closePopup(popupPreviewImage))
 
 
 const validatorEdit = new FormValidator(enableValidationConfig, formEdit);
@@ -107,4 +108,4 @@ validatorAdd.enableValidation();
 
 
 
-export {popupCaption, popupImage, popupScaleImage}
+export {popupCaption, popupImage, popupPreviewImage, closeOverlayPopup, closeEscapePopup}

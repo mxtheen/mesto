@@ -1,5 +1,6 @@
 import initialCards from "./cards.js";
-import { popupCaption, popupImage, popupScaleImage } from "./index.js";
+import {popupCaption, popupImage, popupPreviewImage, closeOverlayPopup, closeEscapePopup} from "./index.js";
+
 
 class Card {
   constructor(data, cardTemplate) {
@@ -24,7 +25,12 @@ class Card {
     popupCaption.textContent = this._element.querySelector(".element__title").textContent
     popupImage.src = this._element.querySelector(".element__image").src
     popupImage.alt = this._element.querySelector(".element__title").textContent
-    popupScaleImage.classList.add("popup_opened")
+    popupPreviewImage.classList.add("popup_opened")
+    popupPreviewImage.addEventListener("mousedown", closeOverlayPopup)
+    document.addEventListener("keydown", closeEscapePopup)
+  }
+  _closePreviewImage () {
+    popupPreviewImage.classList.remove("popup_opened")
   }
 
   _setEventListeners() {
