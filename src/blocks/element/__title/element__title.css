@@ -5,6 +5,7 @@
   font-weight: 900;
   width: 200px;
   margin: 0;
+  padding-left: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
