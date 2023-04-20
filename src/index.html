@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/Vector.svg" alt="Место - логотоп">
+    <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Место - логотоп">
   </header>
   <main class="content">
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__avatar" src="images/avatar__image.jpg" alt="аватар">
+        <img class="profile__avatar" src="<%=require('./images/avatar__image.jpg')%>" alt="аватар">
         <div class="profile__info">
           <div class="profile__info-container">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -25,7 +24,7 @@
         </div>
       </div>
       <button class="profile__add-button" type="button">
-        <img class="profile__add-image" src="./images/vector_plus__image.svg" alt="Добавить изображение">
+        <img class="profile__add-image" src="<%=require('./images/vector_plus__image.svg')%>" alt="Добавить изображение">
       </button>
     </section>
     <section class="elements" aria-label="Блок с изображениями">
@@ -89,7 +88,6 @@
       </div>
     </article>
   </template>
-  <script src="./pages/index.js" type="module"></script>
 </body>
 
 </html>
