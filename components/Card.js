@@ -10,11 +10,11 @@ export default class Card {
     return cardElement
   }
 
-  _handleLikeClick (evt) {
+  _handleLikeClick(evt) {
     evt.target.classList.toggle("element__like-image_active")
   }
 
-  _handleRemoveClick () {
+  _handleRemoveClick() {
     this._element.remove()
   }
 
@@ -22,12 +22,13 @@ export default class Card {
     this._element.querySelector(".element__like-button").addEventListener("click", this._handleLikeClick.bind(this))
     this._element.querySelector(".element__remove-button").addEventListener("click", this._handleRemoveClick.bind(this))
     this._element.querySelector(".element__image").addEventListener("click", () => {
-      this._handleCardClick (this._name, this._link)})
+      this._handleCardClick(this._name, this._link)
+    })
   }
 
   renderCard() {
     this._element = this._getTemplate()
-    this._image =  this._element.querySelector(".element__image")
+    this._image = this._element.querySelector(".element__image")
     this._setEventListeners()
     this._element.querySelector(".element__title").textContent = this._name
     this._image.alt = this._name

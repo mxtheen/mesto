@@ -1,5 +1,5 @@
 export default class FormValidator {
-  constructor (config, formElement) {
+  constructor(config, formElement) {
     this._formElement = formElement;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
@@ -32,7 +32,7 @@ export default class FormValidator {
 
   _setEventListeners() {
     const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-    inputList.forEach ((inputElement) => {
+    inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         this.toggleButtonState();
@@ -53,6 +53,3 @@ export default class FormValidator {
     this._setEventListeners();
   }
 }
-
-
-
