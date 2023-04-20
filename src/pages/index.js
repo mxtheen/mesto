@@ -9,8 +9,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 import {
-  profileTitle,
-  profileSubtitle,
   formEdit,
   formAdd,
   nameInput,
@@ -32,23 +30,23 @@ const defaultCardList = new Section({
 
 defaultCardList.renderItems();
 
+const imagePopup = new PopupWithImage (".popup_scale-image")
+imagePopup.setEventListeners()
+
 function createCard(item) {
-  const card = new Card(item,
-    '#card-template',
-    handlePopupImage);
+  const card = new Card({
+    data: item,
+    handleCardClick: () => {
+    imagePopup.open(item.name, item.link)
+  }}, "#card-template")
   const cardElement = card.renderCard()
   return cardElement
 }
 
-function handlePopupImage() {
-  const imagePopup = new PopupWithImage(".popup_scale-image")
-  imagePopup.open(this._name, this._link)
-  imagePopup.setEventListeners()
-}
 
 const userInfo = new UserInfo({
-  nameSelector: profileTitle,
-  infoSelector: profileSubtitle
+  nameSelector: ".profile__title",
+  infoSelector: ".profile__subtitle"
 });
 
 
