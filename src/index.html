@@ -14,7 +14,9 @@
   <main class="content">
     <section class="profile">
       <div class="profile__container">
-        <img class="profile__avatar" src="<%=require('./images/avatar__image.jpg')%>" alt="аватар">
+        <button class = "profile__avatar-button">
+          <img class="profile__avatar" src="<%=require('./images/avatar__image.jpg')%>" alt="аватар">
+        </button>
         <div class="profile__info">
           <div class="profile__info-container">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -24,7 +26,8 @@
         </div>
       </div>
       <button class="profile__add-button" type="button">
-        <img class="profile__add-image" src="<%=require('./images/vector_plus__image.svg')%>" alt="Добавить изображение">
+        <img class="profile__add-image" src="<%=require('./images/vector_plus__image.svg')%>"
+          alt="Добавить изображение">
       </button>
     </section>
     <section class="elements" aria-label="Блок с изображениями">
@@ -69,6 +72,29 @@
       </form>
     </div>
   </div>
+  <div class="popup popup_update-avatar">
+    <div class="popup__content">
+      <button type="button" class="popup__close-button popup__close-button_edit"></button>
+      <form class="popup__form popup__form-edit" name="form__avatar" id="form__upd-avatar" novalidate>
+        <h2 class="popup__title">Обновить аватар</h2>
+
+        <input id="input-avatar" class="popup__input popup__input_type_link" placeholder="Ссылка на аватар" type="url"
+          name="avatar" required>
+
+        <span id="input-avatar-error" class="popup__error"></span>
+        <button type="submit" class="popup__save-button popup__save-button_edit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_confirmation">
+    <div class="popup__content popup__content_confirmation">
+      <button type="button" class="popup__close-button popup__close-button_edit"></button>
+      <form class="popup__form popup__form_confirm" name="form__avatar" id="form__upd-avatar" novalidate>
+        <h2 class="popup__title popup__title_confirmation">Вы уверены?</h2>
+        <button type="submit" class="popup__save-button popup__save-button_edit">Да</button>
+      </form>
+    </div>
+  </div>
   <div class="popup popup_scale-image">
     <div class="popup__content-scale-image">
       <button type="button" class="popup__close-button popup__close-button_image"></button>
@@ -84,7 +110,10 @@
       <img class="element__image" src="#" alt="">
       <div class="element__caption">
         <h2 class="element__title"></h2>
-        <button class="element__like-button"></button>
+        <div class="element__like-container">
+          <button class='element__like-button'></button>
+          <p class="element__like-counter">0</p>
+        </div>
       </div>
     </article>
   </template>
