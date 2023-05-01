@@ -21,7 +21,8 @@ import {
   popupBtnEdit,
   element,
   profileAvatarBtn,
-  profileAvatar
+  profileAvatar,
+  avatarInput
 } from "../utils/constants.js"
 let currentUserId;
 
@@ -34,30 +35,33 @@ const apiConfig = ({
 });
 const apiInit = new Api(apiConfig)
 
+const userInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  infoSelector: ".profile__subtitle",
+  avatarSelector: ".profile__avatar",
+});
+
+
+const defaultCardList = new Section({
+  renderer: (item) => {
+    const card = createCard(item);
+    defaultCardList.addDefaultItem(card);
+  }
+}, element);
 
 Promise.all([
   apiInit.getUserInfo(),
-]).then(([user]) => {
+  apiInit.getInitialCards()
+]).then(([user, data]) => {
   currentUserId = user._id
   userInfo.setUserInfo(user.name, user.about)
   userInfo.changeUserAvatar(user.avatar)
+  defaultCardList.renderItems(data)
+}) .catch(err => {
+  console.log("При получении данных с сервера возникла ошибка:", err)
 })
 
 
-apiInit.getInitialCards()
-  .then(data => {
-    const defaultCardList = new Section({
-      items: data,
-      renderer: (item) => {
-        const card = createCard(item);
-        defaultCardList.addDefaultItem(card);
-      }
-    }, element);
-    defaultCardList.renderItems();
-  })
-  .catch(err => {
-    console.log("При инициализации карточек возникла ошибка:", err)
-  })
 
 
 function createCard(item) {
@@ -71,25 +75,25 @@ function createCard(item) {
     },
     handleLikeClick: () => {
       apiInit.putLikeCard(item._id)
-      .then((res) => {
-        card.likeCounter = res.likes
-        card.renderLikeIcon()
-        card.renderLikeCounter(res.likes.length)
-      })
-      .catch(err => {
-        console.log("При лайке карточки возникла ошибка:", err)
-      })
+        .then((res) => {
+          card.likeCounter = res.likes
+          card.renderLikeIcon()
+          card.renderLikeCounter(res.likes.length)
+        })
+        .catch(err => {
+          console.log("При лайке карточки возникла ошибка:", err)
+        })
     },
-    handleDeleteLike:() => {
+    handleDeleteLike: () => {
       apiInit.deleteLikeCard(item._id)
-      .then((res) => {
-        card.likeCounter = res.likes
-        card.renderLikeCounter(res.likes.length)
-        card.renderLikeIcon()
-      })
-      .catch(err => {
-        console.log("При снятии лайка карточки возникла ошибка:", err)
-      })
+        .then((res) => {
+          card.likeCounter = res.likes
+          card.renderLikeCounter(res.likes.length)
+          card.renderLikeIcon()
+        })
+        .catch(err => {
+          console.log("При снятии лайка карточки возникла ошибка:", err)
+        })
     }
   }, "#card-template",
     currentUserId
@@ -101,11 +105,6 @@ function createCard(item) {
 
 
 
-const userInfo = new UserInfo({
-  nameSelector: ".profile__title",
-  infoSelector: ".profile__subtitle",
-  avatarSelector: ".profile__avatar",
-});
 
 
 
@@ -137,7 +136,7 @@ const updAvatarPopup = new PopupWithForm(".popup_update-avatar",
         .then(data => {
           updAvatarPopup.renderLoading(true)
           updAvatarPopup.close()
-          profileAvatar.src = data.avatar
+          userInfo.changeUserAvatar(data.avatar)
         })
         .catch(err => {
           console.log("При обновлении аватара возникла ошибка:", err)
@@ -155,6 +154,8 @@ popupBtnEdit.addEventListener("click", () => {
   const userInfoValues = userInfo.getUserInfo()
   nameInput.value = userInfoValues.name
   jobInput.value = userInfoValues.about
+  validatorEdit.hideInputError(nameInput)
+  validatorEdit.hideInputError(jobInput)
 })
 
 
@@ -166,7 +167,7 @@ const addPopup = new PopupWithForm(".popup_add",
       return apiInit.createNewCard(item)
         .then(data => {
           const card = createCard(data)
-          element.prepend(card)
+          defaultCardList.addNewItem(card)
           addPopup.close()
         })
         .catch(err => {
@@ -182,6 +183,8 @@ addPopup.setEventListeners()
 popupBtnAdd.addEventListener("click", () => {
   addPopup.open()
   validatorAdd.toggleButtonState()
+  validatorAdd.hideInputError(titleInput)
+  validatorAdd.hideInputError(linkInput)
 }
 )
 
@@ -190,6 +193,7 @@ updAvatarPopup.setEventListeners()
 profileAvatarBtn.addEventListener("click", () => {
   updAvatarPopup.open()
   validatorUpdAvatar.toggleButtonState()
+  validatorUpdAvatar.hideInputError(avatarInput)
 })
 
 const confirmPopup = new PopupWithConfirmation(".popup_confirmation",
